@@ -32,6 +32,15 @@
           </ul>
           {%endif%}      
 
+         {% if note.checklist_items %}
+            <ul>
+            {% for item in note.checklist_items %}
+            <li class="{% if item.get().checked %} checked {%endif%}"> {{item.get().title}}</li>
+            {%endfor%}
+            </ul>
+          {% endif %}
+          </div>
+         {% endfor %}
          <h4>Add a new note</h4>
          <form action="" method="post" enctype='multipart/form-data'>
          <div class="form-group">
@@ -53,17 +62,6 @@
          <div class="form-group">
            <button type="submit">Save note</button>
          </div>
-
-         {% if note.checklist_items %}
-            <ul>
-            {% for item in note.checklist_items %}
-            <li class="{% if item.get().checked %} checked {%endif%}"> {{item.get().title}}</li>
-            {%endfor%}
-            </ul>
-          {% endif %}
-          </div>
-         {% endfor %}
-
       </div>
   </body>
 </html>

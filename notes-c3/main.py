@@ -145,7 +145,7 @@ class ShrinkHandler(webapp2.RequestHandler):
         content_t = images_formats.get(str(image.format))
         with cloudstorage.open(file.full_path, 'w', content_type=content_t) as f:
           f.write(new_image_data)
-      except images.BadImageError:
+      except images.NotImageError:
         pass
 
   def get(self):
